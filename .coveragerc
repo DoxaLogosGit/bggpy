@@ -1,0 +1,9 @@
+[run]
+source=bgg_collector
+
+[report]
+omit=
+     tests/*
+     */site-packages/*
+     */python?.?/*
+

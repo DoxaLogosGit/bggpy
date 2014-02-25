@@ -1,0 +1,15 @@
+language: python
+
+install:
+    - pip install --use-mirrors requests
+    - pip install --use-mirrors nose-cov
+    - pip install --use-mirrors beautifulsoup4
+    - pip install --use-mirrors coveralls
+
+script: 
+    # goto the tests directory and run nosetests
+    - cd tests
+    - nosetests --with-cov --cov-config ../.coveragerc
+
+after_success:
+    coveralls
