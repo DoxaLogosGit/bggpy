@@ -38,6 +38,33 @@ class CollectorTest(unittest.TestCase):
 
         self.assertEquals(expected_entry, test_entry)
 
+    def test_get_entry_with_na_year1(self):
+
+        expected_entry = {"gameid":"12333",
+                          "title":"Twilight Struggle",
+                          "year":"N/A"}
+        soup_parse = BeautifulSoup("<div id='status_objectname1'></div><div id='results_objectname1' style='z-index:1000;' onclick=''><a  href=\"/boardgame/12333/twilight-struggle\"   >Twilight Struggle</a><span> </span></div>")
+        rough_cut = soup_parse.find_all('div', attrs={"style":"z-index:1000;"})
+
+        for tag in rough_cut:
+            test_entry = bgg_game_browser.extract_game_from_entry(tag)
+
+        self.assertEquals(expected_entry, test_entry)
+
+    def test_get_entry_with_na_year2(self):
+
+        expected_entry = {"gameid":"12333",
+                          "title":"Twilight Struggle",
+                          "year":"N/A"}
+        soup_parse = BeautifulSoup("<div id='status_objectname1'></div><div id='results_objectname1' style='z-index:1000;' onclick=''><a  href=\"/boardgame/12333/twilight-struggle\"   >Twilight Struggle</a> blahblah</div>")
+        rough_cut = soup_parse.find_all('div', attrs={"style":"z-index:1000;"})
+
+        for tag in rough_cut:
+            test_entry = bgg_game_browser.extract_game_from_entry(tag)
+
+        self.assertEquals(expected_entry, test_entry)
+
+
     @patch("bgg_game_browser.get_page_text")
     def test_get_games(self, get_mock):
         with open("tests/test_html.html") as td:

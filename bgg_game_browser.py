@@ -47,8 +47,9 @@ def extract_game_from_entry(tag):
     # get year
     try:
         match = NUM_PATTERN.search(contents[1].text)
-    except IndexError:
+    except:
         entry_dict["year"] = "N/A"
+        return entry_dict
 
     try:
         entry_dict["year"] = match.group(0)
