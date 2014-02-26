@@ -67,3 +67,13 @@ class CollectorTest(unittest.TestCase):
 
         games = bgg_collector.get_list_of_top_games(355)
         self.assertEquals(len(games), 355)
+
+    @patch("bgg_collector.get_page_text")
+    def test_get_games_45(self, get_mock):
+        with open("tests/test_html.html") as td:
+            test_data = td.read()
+
+        get_mock.return_value = test_data
+
+        games = bgg_collector.get_list_of_top_games(45)
+        self.assertEquals(len(games), 45)
