@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from mock import patch
 sys.path.append("../")
 
-import bgg_collector
+import bgg_game_browser
 
 
 class CollectorTest(unittest.TestCase):
@@ -16,13 +16,13 @@ class CollectorTest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @patch("bgg_collector.get_page_text")
+    @patch("bgg_game_browser.get_page_text")
     def test_get_games_on_page(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
-        game_list = bgg_collector.extract_games_from_page(1, "all")
+        game_list = bgg_game_browser.extract_games_from_page(1, "all")
         self.assertEquals(len(game_list), 100)
 
     def test_get_entry(self):
@@ -34,46 +34,46 @@ class CollectorTest(unittest.TestCase):
         rough_cut = soup_parse.find_all('div', attrs={"style":"z-index:1000;"})
 
         for tag in rough_cut:
-            test_entry = bgg_collector.extract_game_from_entry(tag)
+            test_entry = bgg_game_browser.extract_game_from_entry(tag)
 
         self.assertEquals(expected_entry, test_entry)
 
-    @patch("bgg_collector.get_page_text")
+    @patch("bgg_game_browser.get_page_text")
     def test_get_games(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
 
-        games = bgg_collector.get_list_of_top_games(100)
+        games = bgg_game_browser.get_list_of_top_games(100)
         self.assertEquals(len(games), 100)
 
-    @patch("bgg_collector.get_page_text")
+    @patch("bgg_game_browser.get_page_text")
     def test_get_games_300(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
 
-        games = bgg_collector.get_list_of_top_games(300)
+        games = bgg_game_browser.get_list_of_top_games(300)
         self.assertEquals(len(games), 300)
 
-    @patch("bgg_collector.get_page_text")
+    @patch("bgg_game_browser.get_page_text")
     def test_get_games_355(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
 
-        games = bgg_collector.get_list_of_top_games(355)
+        games = bgg_game_browser.get_list_of_top_games(355)
         self.assertEquals(len(games), 355)
 
-    @patch("bgg_collector.get_page_text")
+    @patch("bgg_game_browser.get_page_text")
     def test_get_games_45(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
 
-        games = bgg_collector.get_list_of_top_games(45)
+        games = bgg_game_browser.get_list_of_top_games(45)
         self.assertEquals(len(games), 45)

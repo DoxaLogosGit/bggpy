@@ -1,5 +1,5 @@
 [run]
-source=bgg_collector
+source=bgg_game_browser
 
 [report]
 omit=
