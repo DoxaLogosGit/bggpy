@@ -17,7 +17,7 @@ class CollectorTest(unittest.TestCase):
         pass
 
     @patch("bgg_collector.get_page_text")
-    def test_get_games(self, get_mock):
+    def test_get_games_on_page(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
@@ -39,7 +39,7 @@ class CollectorTest(unittest.TestCase):
         self.assertEquals(expected_entry, test_entry)
 
     @patch("bgg_collector.get_page_text")
-    def test_get_games_on_page(self, get_mock):
+    def test_get_games(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
 
@@ -48,3 +48,22 @@ class CollectorTest(unittest.TestCase):
         games = bgg_collector.get_list_of_top_games(100)
         self.assertEquals(len(games), 100)
 
+    @patch("bgg_collector.get_page_text")
+    def test_get_games_300(self, get_mock):
+        with open("tests/test_html.html") as td:
+            test_data = td.read()
+
+        get_mock.return_value = test_data
+
+        games = bgg_collector.get_list_of_top_games(300)
+        self.assertEquals(len(games), 300)
+
+    @patch("bgg_collector.get_page_text")
+    def test_get_games_355(self, get_mock):
+        with open("tests/test_html.html") as td:
+            test_data = td.read()
+
+        get_mock.return_value = test_data
+
+        games = bgg_collector.get_list_of_top_games(355)
+        self.assertEquals(len(games), 355)
