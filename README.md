@@ -3,6 +3,7 @@ BGGpy
 
 A BoardGameGeek Python APi
 
+[![Coverage Status](https://coveralls.io/repos/jgatkinsn/bggpy/badge.png?branch=master)](https://coveralls.io/r/jgatkinsn/bggpy?branch=master)
 
 LICENSE
 -------
