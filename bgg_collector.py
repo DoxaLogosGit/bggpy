@@ -18,6 +18,12 @@ BASE_URL = "http://boardgamegeek.com/{0}browse/boardgame/page/{1}"
 
 NUM_PATTERN = re.compile("\d+")
 
+def get_page_text(page_num, category):
+    """
+        For now this function is here for ease of unit testing
+    """
+    page = requests.get(BASE_URL.format(CATEGORIES[category], str(page_num + 1)))
+    return page.text
 
 def extract_game_from_entry(tag):
     """
@@ -64,9 +70,9 @@ def extract_games_from_page(page_num, category, stop_at=100):
 
     :return: a list of games with their gameid in rank order
     """
-    page = requests.get(BASE_URL.format(CATEGORIES[category], str(page_num + 1)))
+    page = get_page_text(page_num, category)
 
-    soup_parse = BeautifulSoup(page.text)
+    soup_parse = BeautifulSoup(page)
 
     #find the games 
     rough_cut = soup_parse.find_all('div', attrs={"style":"z-index:1000;"})
