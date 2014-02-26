@@ -6,4 +6,5 @@ omit=
      tests/*
      */site-packages/*
      */python?.?/*
+     __init__.py
 

@@ -18,7 +18,7 @@ class CollectorTest(unittest.TestCase):
 
     @patch("bgg_collector.get_page_text")
     def test_get_games(self, get_mock):
-        with open("test_html.html") as td:
+        with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data
@@ -40,7 +40,7 @@ class CollectorTest(unittest.TestCase):
 
     @patch("bgg_collector.get_page_text")
     def test_get_games_on_page(self, get_mock):
-        with open("test_html.html") as td:
+        with open("tests/test_html.html") as td:
             test_data = td.read()
 
         get_mock.return_value = test_data

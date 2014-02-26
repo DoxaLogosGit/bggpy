@@ -8,8 +8,7 @@ install:
 
 script: 
     # goto the tests directory and run nosetests
-    - cd tests
-    - nosetests --with-cov --cov-config ../.coveragerc
+    - nosetests --with-cov --cov-config=.coveragerc tests
 
 after_success:
     coveralls
