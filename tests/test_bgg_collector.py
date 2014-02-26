@@ -1,11 +1,11 @@
 import unittest
 import sys
 import requests
+from bs4 import BeautifulSoup
 from mock import patch
 sys.path.append("../")
 
 import bgg_collector
-from bs4 import BeautifulSoup
 
 
 class CollectorTest(unittest.TestCase):
