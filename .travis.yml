@@ -8,6 +8,7 @@ install:
 
 script: 
     # goto the tests directory and run nosetests
+    - export PYTHONPATH=$PYTHONPATH:.
     - nosetests --with-cov --cov-config=.coveragerc tests
 
 after_success:
