@@ -2,8 +2,9 @@ BGGpy
 =====
 
 A BoardGameGeek Python APi
-
+[![Build Status](https://travis-ci.org/jgatkinsn/OpenXcom-mod-installer-ext.svg?branch=master)](https://travis-ci.org/jgatkinsn/OpenXcom-mod-installer-ext)
 [![Coverage Status](https://coveralls.io/repos/jgatkinsn/bggpy/badge.png?branch=master)](https://coveralls.io/r/jgatkinsn/bggpy?branch=master)
+
 
 LICENSE
 -------

@@ -1,4 +1,6 @@
 *.pyc
 .hg
 *.swp
+dist
+.cache
 

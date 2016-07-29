@@ -2,14 +2,14 @@ language: python
 
 install:
     - pip install --use-mirrors requests
-    - pip install --use-mirrors nose-cov
+    - pip install --use-mirrors pytest-coverage
     - pip install --use-mirrors beautifulsoup4
     - pip install --use-mirrors coveralls
 
 script: 
     # goto the tests directory and run nosetests
     - export PYTHONPATH=$PYTHONPATH:.
-    - nosetests --with-cov --cov-config=.coveragerc tests
+    - py.test --with-cov --cov-config=.coveragerc tests
 
 after_success:
     coveralls

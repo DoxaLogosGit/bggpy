@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from mock import patch
 sys.path.append("../")
 
-import bgg_game_browser
+from bggpy import bgg_game_browser
 
 
 class CollectorTest(unittest.TestCase):
@@ -16,7 +16,7 @@ class CollectorTest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @patch("bgg_game_browser.get_page_text")
+    @patch("bggpy.bgg_game_browser.get_page_text")
     def test_get_games_on_page(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
@@ -65,7 +65,7 @@ class CollectorTest(unittest.TestCase):
         self.assertEquals(expected_entry, test_entry)
 
 
-    @patch("bgg_game_browser.get_page_text")
+    @patch("bggpy.bgg_game_browser.get_page_text")
     def test_get_games(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
@@ -75,7 +75,7 @@ class CollectorTest(unittest.TestCase):
         games = bgg_game_browser.get_list_of_top_games(100)
         self.assertEquals(len(games), 100)
 
-    @patch("bgg_game_browser.get_page_text")
+    @patch("bggpy.bgg_game_browser.get_page_text")
     def test_get_games_300(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
@@ -85,7 +85,7 @@ class CollectorTest(unittest.TestCase):
         games = bgg_game_browser.get_list_of_top_games(300)
         self.assertEquals(len(games), 300)
 
-    @patch("bgg_game_browser.get_page_text")
+    @patch("bggpy.bgg_game_browser.get_page_text")
     def test_get_games_355(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
@@ -95,7 +95,7 @@ class CollectorTest(unittest.TestCase):
         games = bgg_game_browser.get_list_of_top_games(355)
         self.assertEquals(len(games), 355)
 
-    @patch("bgg_game_browser.get_page_text")
+    @patch("bggpy.bgg_game_browser.get_page_text")
     def test_get_games_45(self, get_mock):
         with open("tests/test_html.html") as td:
             test_data = td.read()
