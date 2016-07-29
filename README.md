@@ -1,7 +1,7 @@
 BGGpy
 =====
 
-A BoardGameGeek Python APi
+A BoardGameGeek Python API
 [![Build Status](https://travis-ci.org/jgatkinsn/bggpy.svg?branch=master)](https://travis-ci.org/jgatkinsn/bggpy)
 [![Coverage Status](https://coveralls.io/repos/jgatkinsn/bggpy/badge.png?branch=master)](https://coveralls.io/r/jgatkinsn/bggpy?branch=master)
 
